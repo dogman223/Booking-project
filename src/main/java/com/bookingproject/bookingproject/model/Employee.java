@@ -14,7 +14,8 @@ public class Employee {
 
     private String name;
     private String lastname;
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private EmployeeRole employeeRole;
     private BigDecimal salary;
 
     public Employee() {
