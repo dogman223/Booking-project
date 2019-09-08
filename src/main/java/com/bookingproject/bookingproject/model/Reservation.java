@@ -31,5 +31,4 @@ public class Reservation {
     private LocalDateTime arrival;
     private LocalDateTime departure;
 
-
 }
