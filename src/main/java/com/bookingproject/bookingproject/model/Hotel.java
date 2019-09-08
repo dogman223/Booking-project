@@ -1,7 +1,11 @@
 package com.bookingproject.bookingproject.model;
 
-import javax.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+@Data
+@NoArgsConstructor
 @Entity(name = "hotel")
 public class Hotel {
     @Id

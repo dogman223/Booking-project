@@ -1,11 +1,16 @@
 package com.bookingproject.bookingproject.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity(name = "employees")
+@Data
+@NoArgsConstructor
 public class Employee {
 
     @Id
@@ -17,16 +22,6 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private EmployeeRole employeeRole;
     private BigDecimal salary;
-
-    public Employee() {
-    }
-
-    public Employee(String name, String lastname, String role, BigDecimal salary) {
-        this.name = name;
-        this.lastname = lastname;
-        this.role = role;
-        this.salary = salary;
-    }
 
     public Long getId() {
         return id;
@@ -52,12 +47,12 @@ public class Employee {
         this.lastname = lastname;
     }
 
-    public String getRole() {
-        return role;
+    public EmployeeRole getEmployeeRole() {
+        return employeeRole;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setEmployeeRole(EmployeeRole employeeRole) {
+        this.employeeRole = employeeRole;
     }
 
     public BigDecimal getSalary() {

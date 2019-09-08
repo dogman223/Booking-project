@@ -21,7 +21,7 @@ public class EmployeeManager implements InitializingBean {
     public void saveEmployee(){
         Employee employee = new Employee();
         employee.setEmployeeRole(EmployeeRole.MANAGER);
-        employee.setEarnings(BigDecimal.valueOf(8000));
+        employee.setSalary(BigDecimal.valueOf(8000));
         employee.setName("Vladislav");
         employee.setLastname("Kovalenko");
         employeeRepository.save(employee);
