@@ -2,9 +2,8 @@ package com.bookingproject.bookingproject.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -19,4 +18,8 @@ public class Client {
     private String surname;
     private String email;
     private String phone;
+
+    @OneToMany
+    @JoinColumn(name = "id_client")
+    private List<Reservation> reservations;
 }

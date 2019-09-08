@@ -3,10 +3,9 @@ package com.bookingproject.bookingproject.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -15,12 +14,20 @@ public class Reservation {
 
     @Id
     @GeneratedValue
-    private long reservation_ID;
+    private Long id;
 
-    private long hotel_ID;
-    private long client_ID;
+    @ManyToOne
+    @JoinColumn (name = "id_hotel")
+    private Hotel hotel;
 
-    private long room_ID;
+    @OneToMany
+    @JoinColumn(name = "id_rent")
+    private List<Rent> rents;
+
+    @ManyToOne
+    @JoinColumn (name = "id_room")
+    private Room room;
+
     private LocalDateTime arrival;
     private LocalDateTime departure;
 

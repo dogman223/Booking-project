@@ -6,33 +6,27 @@
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
-    @Entity(name= "rent")
-    public class Rent {
+@Entity(name= "rent")
+public class Rent {
 
     @Id
     @GeneratedValue
-    private long Id;
+    private Long Id;
 
-
-    private long employeeId;
-
-
-    private long reservationId;
-
+    @ManyToOne
+    @JoinColumn (name = "id_employee")
+    private Employee employee;
 
     private LocalDateTime reservationDate;
 
-
     private BigDecimal finalPrice;
-
 
 }
 

@@ -10,8 +10,8 @@ import javax.persistence.*;
 public class Hotel {
     @Id
     @GeneratedValue
-    private long id;
-
+    @Column
+    private Long id;
     private String name;
 
 }
