@@ -5,6 +5,8 @@ import com.bookingproject.bookingproject.repository.ClientRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+
 @Service
 public class ClientManager implements InitializingBean {
 
@@ -62,5 +64,9 @@ public class ClientManager implements InitializingBean {
         saveClient3();
         saveClient4();
         saveClient5();
+    }
+
+    public void saveClient(Client client) {
+        clientRepository.save(client);
     }
 }
