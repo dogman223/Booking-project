@@ -71,4 +71,8 @@ public class ClientManager implements InitializingBean {
         Client client = ClientMapper.map(clientRequest);
         clientRepository.save(client);
     }
+
+//    public void editClient () {
+//        clientRepository.getOne()
+//    }
 }
