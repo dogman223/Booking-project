@@ -1,9 +1,12 @@
 package com.bookingproject.bookingproject.service;
 
+import com.bookingproject.bookingproject.controller.CreateClientRequest;
 import com.bookingproject.bookingproject.model.Client;
 import com.bookingproject.bookingproject.repository.ClientRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
+
+import javax.persistence.EntityManager;
 
 @Service
 public class ClientManager implements InitializingBean {
@@ -62,5 +65,10 @@ public class ClientManager implements InitializingBean {
         saveClient3();
         saveClient4();
         saveClient5();
+    }
+
+    public void saveClient(CreateClientRequest clientRequest) {
+        Client client = ClientMapper.map(clientRequest);
+        clientRepository.save(client);
     }
 }
