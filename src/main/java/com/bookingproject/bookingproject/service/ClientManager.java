@@ -1,5 +1,6 @@
 package com.bookingproject.bookingproject.service;
 
+import com.bookingproject.bookingproject.controller.CreateClientRequest;
 import com.bookingproject.bookingproject.model.Client;
 import com.bookingproject.bookingproject.repository.ClientRepository;
 import org.springframework.beans.factory.InitializingBean;
@@ -66,7 +67,8 @@ public class ClientManager implements InitializingBean {
         saveClient5();
     }
 
-    public void saveClient(Client client) {
+    public void saveClient(CreateClientRequest clientRequest) {
+        Client client = ClientMapper.map(clientRequest);
         clientRepository.save(client);
     }
 }
