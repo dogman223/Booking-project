@@ -1,5 +1,8 @@
 package com.bookingproject.bookingproject.service;
 
+import com.bookingproject.bookingproject.controller.CreateClientRequest;
+import com.bookingproject.bookingproject.controller.CreateEmployeeRequest;
+import com.bookingproject.bookingproject.model.Client;
 import com.bookingproject.bookingproject.model.Employee;
 import com.bookingproject.bookingproject.model.EmployeeRole;
 import com.bookingproject.bookingproject.repository.EmployeeRepository;
@@ -67,4 +70,10 @@ public class EmployeeManager implements InitializingBean {
         saveCharwoman();
         saveEmployee();
     }
+
+    public void saveEmployee(CreateEmployeeRequest employeeRequest) {
+        Employee employee = EmployeeMapper.map(employeeRequest);
+        employeeRepository.save(employee);
+    }
+
 }
