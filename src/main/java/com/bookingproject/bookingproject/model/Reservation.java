@@ -30,5 +30,7 @@ public class Reservation {
 
     private LocalDateTime arrival;
     private LocalDateTime departure;
+    private Integer guestsNumber;
+    private ReservationStatus status;
 
 }
