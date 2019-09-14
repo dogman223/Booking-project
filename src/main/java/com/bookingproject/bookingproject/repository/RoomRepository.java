@@ -8,4 +8,7 @@ import java.util.List;
 public interface RoomRepository extends JpaRepository<Room,Long> {
 
     List<Room> findRoomsById (Long id);
+
+    @Override
+    Room getOne(Long id);
 }

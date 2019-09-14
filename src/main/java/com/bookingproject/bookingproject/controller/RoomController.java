@@ -1,13 +1,14 @@
 package com.bookingproject.bookingproject.controller;
 
+import com.bookingproject.bookingproject.model.Employee;
 import com.bookingproject.bookingproject.model.Room;
+import com.bookingproject.bookingproject.model.UpdateRoomRequest;
 import com.bookingproject.bookingproject.service.RoomManager;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,5 +38,11 @@ public class RoomController {
         return "addroom";
     }
 
-
+    @PutMapping("/{id}")
+    public ResponseEntity updateRoom(@PathVariable ("id") Long id, @RequestBody UpdateRoomRequest updateRoomRequest){
+      roomManager.updateRoom(id, updateRoomRequest);
+      return new ResponseEntity(HttpStatus.OK);
+    }
 }
+
+

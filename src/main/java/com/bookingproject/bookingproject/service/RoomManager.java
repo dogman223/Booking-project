@@ -1,8 +1,10 @@
 package com.bookingproject.bookingproject.service;
 
+import com.bookingproject.bookingproject.exception.RoomNotFoundException;
 import com.bookingproject.bookingproject.model.Room;
 import com.bookingproject.bookingproject.model.RoomCategory;
 import com.bookingproject.bookingproject.model.RoomStatus;
+import com.bookingproject.bookingproject.model.UpdateRoomRequest;
 import com.bookingproject.bookingproject.repository.RoomRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
@@ -114,5 +116,17 @@ public class RoomManager implements InitializingBean {
 
     public List<Room> getRooms() {
         return roomRepository.findAll();
+    }
+
+    public void updateRoom(Long id, UpdateRoomRequest updateRoomRequest) {
+        Room room = roomRepository.findById(id).orElseThrow(RoomNotFoundException::new);
+        room.setVacOcc(updateRoomRequest.getVacOcc());
+        room.setRoomStatus(RoomStatus.CLEAN);
+        roomRepository.save(room);
+    }
+
+    public Room findById(Long id){
+        Room one = roomRepository.getOne(id);
+        return one;
     }
 }

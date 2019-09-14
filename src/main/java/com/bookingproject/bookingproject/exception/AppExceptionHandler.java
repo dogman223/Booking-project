@@ -12,4 +12,7 @@ public class AppExceptionHandler {
     public ResponseEntity handleClientNotFoundException(){
         return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(RoomNotFoundException.class)
+    public ResponseEntity handleRoomNotFoundException(){return new ResponseEntity(HttpStatus.NOT_FOUND);}
 }
