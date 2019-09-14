@@ -25,7 +25,7 @@ public class Rent {
     private Employee employee;
 
     private LocalDateTime reservationDate;
-
+    private BigDecimal totalPrice;
     private BigDecimal finalPrice;
 
 }

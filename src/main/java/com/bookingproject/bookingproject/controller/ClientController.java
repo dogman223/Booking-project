@@ -29,10 +29,15 @@ public class ClientController {
         return "new_profile";
     }
 
+    @GetMapping("/registration_successful")
+    String createProfileSuccessfulView () {
+        return "registration_successful";
+    }
+
     @PostMapping
     String createProfile (CreateClientRequest clientRequest) {
         clientManager.saveClient(clientRequest);
-        return "redirect:client";
+        return "redirect:/client/registration_successful";
     }
 
     @GetMapping("/new_reservation")

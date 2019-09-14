@@ -18,6 +18,8 @@ public class Client {
     private String surname;
     private String email;
     private String phone;
+    private String login;
+    private String password;
 
     @OneToMany
     @JoinColumn(name = "id_client")
