@@ -1,6 +1,7 @@
 package com.bookingproject.bookingproject.service;
 
 import com.bookingproject.bookingproject.controller.CreateClientRequest;
+import com.bookingproject.bookingproject.controller.EditClientRequest;
 import com.bookingproject.bookingproject.model.Client;
 import com.bookingproject.bookingproject.repository.ClientRepository;
 import org.springframework.beans.factory.InitializingBean;
@@ -58,6 +59,17 @@ public class ClientManager implements InitializingBean {
         clientRepository.save(client);
     }
 
+    public void saveClient6() {
+        Client client = new Client();
+        client.setName("qqq");
+        client.setSurname("qqq");
+        client.setEmail("qqq@qqq.pl");
+        client.setPhone("345-6234-123");
+        client.setLogin("qqq");
+        client.setPassword("qqq");
+        clientRepository.save(client);
+    }
+
     @Override
     public void afterPropertiesSet() throws Exception {
         saveClient1();
@@ -65,10 +77,30 @@ public class ClientManager implements InitializingBean {
         saveClient3();
         saveClient4();
         saveClient5();
+        saveClient6();
     }
 
     public void saveClient(CreateClientRequest clientRequest) {
         Client client = ClientMapper.map(clientRequest);
         clientRepository.save(client);
+    }
+
+    public Client findClientByLoginAndPassword (String login, String password) {
+        return clientRepository.findDistinctByLoginAndPassword(login, password);
+    }
+
+    public Client findClientById (Long id) {
+        Client client = clientRepository.getOne(id);
+        return client;
+    }
+
+    public void editClient(Long id, EditClientRequest editClientRequest) {
+        Client editedClient = clientRepository.getOne(id);
+        editedClient.setName(editClientRequest.getName());
+        editedClient.setSurname(editClientRequest.getSurname());
+        editedClient.setEmail(editClientRequest.getEmail());
+        editedClient.setPhone(editClientRequest.getPhone());
+        editedClient.setPassword(editClientRequest.getPassword());
+        clientRepository.save(editedClient);
     }
 }

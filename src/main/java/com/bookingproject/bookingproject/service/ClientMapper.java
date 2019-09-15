@@ -10,6 +10,8 @@ public class ClientMapper {
         client.setSurname(clientRequest.getSurname());
         client.setPhone(clientRequest.getPhone());
         client.setEmail(clientRequest.getEmail());
+        client.setLogin(clientRequest.getLogin());
+        client.setPassword(clientRequest.getPassword());
         client.setReservations(null);
         return client;
     }

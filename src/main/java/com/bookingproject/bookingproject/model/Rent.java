@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -25,7 +24,7 @@ public class Rent {
     private Employee employee;
 
     private LocalDateTime reservationDate;
-
+    private BigDecimal totalPrice;
     private BigDecimal finalPrice;
 
 }
