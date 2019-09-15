@@ -103,4 +103,8 @@ public class ClientManager implements InitializingBean {
         editedClient.setPassword(editClientRequest.getPassword());
         clientRepository.save(editedClient);
     }
+
+    public void deleteClient(Long id) {
+        clientRepository.deleteById(id);
+    }
 }

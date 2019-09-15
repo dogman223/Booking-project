@@ -50,7 +50,7 @@ public class ClientController {
         model.addAttribute("client", foundClient);
         return "edit_profile";
     }
-    // dopisać postmapping RedirectView wypełnionego formularza powyżej
+    
     @PostMapping("/edit_profile")
     RedirectView editProfile (@RequestParam(value = "id") Long id, EditClientRequest editClientRequest) {
         clientManager.editClient(id, editClientRequest);
@@ -58,4 +58,18 @@ public class ClientController {
         redirectView.setUrl("/client");
         return redirectView;
     }
+
+    @GetMapping("/delete_profile")
+    String deleteProfileView () {
+        return "delete_profile";
+    }
+
+    @PostMapping("/delete_profile")
+    String deleteProfile (@RequestParam(value = "login") String login,
+                          @RequestParam(value = "password") String password) {
+        Client foundClient = clientManager.findClientByLoginAndPassword(login, password);
+        clientManager.deleteClient(foundClient.getId());
+        return "client";
+    }
+
 }
