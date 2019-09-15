@@ -23,7 +23,8 @@ public class Employee {
     private List<Rent> rents;
 
     private String name;
-    private String lastname;
+    private String surname;
+
     @Enumerated(EnumType.STRING)
     private EmployeeRole employeeRole;
     private BigDecimal salary;
