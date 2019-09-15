@@ -5,9 +5,8 @@ import com.bookingproject.bookingproject.service.EmployeeManager;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,7 +21,33 @@ public class EmployeeController {
     }
 
     @GetMapping
-    String employeeView () {
+    String employeeView() {
         return "employee";
     }
+
+    @GetMapping("/new_employee")
+    String createEmployeeProfileView() {
+        return "new_employee";
+    }
+
+    @PostMapping
+    String createEmployeeProfile(CreateEmployeeRequest employeeRequest) {
+        employeeManager.saveEmployee(employeeRequest);
+        return "redirect:/employee/employee_list";
+    }
+
+    @GetMapping("/employee_list")
+    String employeeList(Model model) {
+        List<Employee>employees = employeeManager.getEmployees();
+        model.addAttribute("employee_list", employees);
+        return "employee_list";
+    }
+    @PostMapping("/delete/{id}")
+    String deleteEmployee(@PathVariable Long id) {
+        employeeManager.deleteEmployee(id);
+        return "redirect:/employee/employee_list";
+    }
+
+
+
 }

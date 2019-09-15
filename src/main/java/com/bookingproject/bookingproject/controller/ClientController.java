@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/client")
@@ -36,12 +39,15 @@ public class ClientController {
     @PostMapping
     String createProfile (CreateClientRequest clientRequest) {
         clientManager.saveClient(clientRequest);
-        return "redirect:/client/registration_successful";
+        return "redirect:client";
     }
 
     @GetMapping("/insert_id")
     String insertIdView () {
         return "insert_id";
+    @GetMapping("/new_reservation")
+    String newResView() {
+        return "new_reservation";
     }
 
     @GetMapping("/edit_profile")
