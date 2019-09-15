@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="main-block">
+    <form th:action="'/rooms' + ${room.id}" method="post">
+        <h1>Create a profile</h1>
+        <fieldset>
+            <legend>
+                <h3>Personal Details</h3>
+            </legend>
+            <div>
+                <div>
+                    <div><label>Category*</label><input type="text" name="roomCategory" th:value="${room.roomCategory}"></div>
+                    <div><label>Status*</label><input type="text" name="roomStatus" th:value="${room.roomStatus}"></div>
+                    <div><label>Vac/Occ*</label><input type="text" name="vacOcc" th:value="${room.vacOcc}"></div>
+                    <div><label>Price*</label><input type="text" name="price" th:value="${room.price}"></div>
+                    <div><label>Beds*</label><input type="text" name="beds" th:value="${room.beds}"></div>
+                </div>
+            </div>
+        </fieldset>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>
