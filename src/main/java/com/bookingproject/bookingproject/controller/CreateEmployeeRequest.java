@@ -12,9 +12,4 @@ public class CreateEmployeeRequest {
     private String surname;
     private EmployeeRole employeeRole;
     private BigDecimal salary;
-<<<<<<< HEAD
-=======
-
-
->>>>>>> KrzysiekW
 }

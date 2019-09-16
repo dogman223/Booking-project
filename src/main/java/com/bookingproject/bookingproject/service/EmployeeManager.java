@@ -2,6 +2,8 @@ package com.bookingproject.bookingproject.service;
 
 
 import com.bookingproject.bookingproject.controller.CreateEmployeeRequest;
+
+import com.bookingproject.bookingproject.model.Client;
 import com.bookingproject.bookingproject.model.Employee;
 import com.bookingproject.bookingproject.model.EmployeeRole;
 import com.bookingproject.bookingproject.repository.EmployeeRepository;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -81,4 +84,23 @@ public class EmployeeManager implements InitializingBean {
 
     }
 
+    public Employee findEmployeeById (Long id) {
+        Employee employee = employeeRepository.getOne(id);
+        return employee;
+    }
+
+
+
+    public void editEmployee(Long id, CreateEmployeeRequest createEmployeeRequest) {
+        Employee editedEmployee = employeeRepository.getOne(id);
+        editedEmployee.setName(createEmployeeRequest.getName());
+        editedEmployee.setSurname(createEmployeeRequest.getSurname());
+        editedEmployee.setEmployeeRole(createEmployeeRequest.getEmployeeRole());
+        editedEmployee.setSalary(createEmployeeRequest.getSalary());
+        employeeRepository.save(editedEmployee);
+    }
+
+
+
 }
+

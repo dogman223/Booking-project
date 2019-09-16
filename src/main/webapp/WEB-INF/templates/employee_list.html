@@ -30,7 +30,7 @@
         <td th:text="${employee.employeeRole}"/>
         <td th:text="${employee.salary}"/>
         <td>
-           <form th:action="'/employee/edit' + ${employee.id}" method="GET">
+           <form th:action="'/employee/edit_employee_profile/' + ${employee.id}" method="GET">
                 <button type="submit" class="btn btn-danger">Edit</button>
            </form>
         </td>

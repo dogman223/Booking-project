@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
@@ -45,6 +46,19 @@ public class EmployeeController {
     @PostMapping("/delete/{id}")
     String deleteEmployee(@PathVariable Long id) {
         employeeManager.deleteEmployee(id);
+        return "redirect:/employee/employee_list";
+    }
+
+    @GetMapping("/edit_employee_profile/{id}")
+    String editEmployeeProfileView (@PathVariable Long id , Model model) {
+        Employee foundEmployee = employeeManager.findEmployeeById(id);
+        model.addAttribute("employee", foundEmployee);
+        return "edit_employee_profile";
+    }
+
+    @PostMapping("/edit_employee_profile/{asdf}")
+    String editCat(@PathVariable("asdf") Long asdf, CreateEmployeeRequest createEmployeeRequest) {
+        employeeManager.editEmployee(asdf, createEmployeeRequest);
         return "redirect:/employee/employee_list";
     }
 
