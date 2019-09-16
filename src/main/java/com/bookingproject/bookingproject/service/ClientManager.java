@@ -7,8 +7,6 @@ import com.bookingproject.bookingproject.repository.ClientRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-
 @Service
 public class ClientManager implements InitializingBean {
 
