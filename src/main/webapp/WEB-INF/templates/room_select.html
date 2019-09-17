@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Rooms</title>
+</head>
+<body>
+<h1>List of available rooms</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Room category</th>
+        <th scope="col">Beds</th>
+        <th scope="col">Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="room: ${rooms}">
+        <td th:text="${room.roomCategory}" />
+        <td th:text="${room.beds}" />
+        <td th:text="${room.price}" />
+        <td>
+            <form action="/client/confirm_reservation" method="get">
+                <button type="submit" class="btn btn-warning">Select</button>
+                <input type="hidden" name="arrival" th:value="${arrival}"/>
+                <input type="hidden" name="departure" th:value="${departure}"/>
+                <input type="hidden" th:name="'roomID'" th:value="${room.id}"/>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
