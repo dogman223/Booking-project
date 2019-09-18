@@ -155,7 +155,31 @@ public class ClientController {
         createReservationRequest.setDeparture(LocalDate.parse(departure));
         createReservationRequest.setRoom(selectedRoom);
         Reservation reservation = reservationManager.saveReservation(createReservationRequest);
-        foundClient.getReservations().add(reservation);
+        EditClientRequest editClientRequest = new EditClientRequest();
+        editClientRequest.setEmail(foundClient.getEmail());
+        editClientRequest.setLogin(foundClient.getLogin());
+        editClientRequest.setName(foundClient.getName());
+        editClientRequest.setPassword(foundClient.getPassword());
+        editClientRequest.setPhone(foundClient.getPhone());
+        editClientRequest.setReservations(foundClient.getReservations());
+        editClientRequest.getReservations().add(reservation);
+        editClientRequest.setSurname(foundClient.getSurname());
+        clientManager.updateReservations(foundClient.getId(), editClientRequest);
         return "/client";
+    }
+
+    @GetMapping("history")
+    String historyView () {
+        return "history";
+    }
+
+    @PostMapping("/history/bookings_list")
+    String history (@RequestParam(value = "login") String login,
+                    @RequestParam(value = "password") String password,
+                    Model model) {
+        Client foundClient = clientManager.findClientByLoginAndPassword(login, password);
+        List<Reservation> reservations = foundClient.getReservations();
+        model.addAttribute("reservations", reservations);
+        return "bookings_list";
     }
 }
