@@ -9,10 +9,22 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class AppExceptionHandler {
 
     @ExceptionHandler(ClientNotFoundException.class)
-    public ResponseEntity handleClientNotFoundException(){
+    public ResponseEntity handleClientNotFoundException() {
         return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(RoomNotFoundException.class)
-    public ResponseEntity handleRoomNotFoundException(){return new ResponseEntity(HttpStatus.NOT_FOUND);}
+    public ResponseEntity handleRoomNotFoundException() {
+        return new ResponseEntity(HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ReservationNotFoundException.class)
+        public ResponseEntity handleReservationNotFoundException() {
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(EmployeeNotFoundException.class)
+        public ResponseEntity handleEmployeeNotFoundException(){
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+    }
 }

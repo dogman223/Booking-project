@@ -3,7 +3,7 @@ package com.bookingproject.bookingproject.service;
 
 import com.bookingproject.bookingproject.controller.CreateEmployeeRequest;
 
-import com.bookingproject.bookingproject.model.Client;
+import com.bookingproject.bookingproject.exception.EmployeeNotFoundException;
 import com.bookingproject.bookingproject.model.Employee;
 import com.bookingproject.bookingproject.model.EmployeeRole;
 import com.bookingproject.bookingproject.repository.EmployeeRepository;
@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -80,6 +79,7 @@ public class EmployeeManager implements InitializingBean {
 
 
     public void deleteEmployee (Long id) {
+        employeeRepository.findById(id).orElseThrow(EmployeeNotFoundException::new);
         employeeRepository.deleteById(id);
 
     }

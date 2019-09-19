@@ -37,4 +37,6 @@ public class RoomController {
         return "addroom";
     }
 
+    @GetMapping("/editroom")
+    String editRoomView(){return "editroom";}
 }
