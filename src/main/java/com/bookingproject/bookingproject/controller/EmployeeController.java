@@ -57,7 +57,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/edit_employee_profile/{asdf}")
-    String editCat(@PathVariable("asdf") Long asdf, CreateEmployeeRequest createEmployeeRequest) {
+    String editEmployee(@PathVariable("asdf") Long asdf, CreateEmployeeRequest createEmployeeRequest) {
         employeeManager.editEmployee(asdf, createEmployeeRequest);
         return "redirect:/employee/employee_list";
     }

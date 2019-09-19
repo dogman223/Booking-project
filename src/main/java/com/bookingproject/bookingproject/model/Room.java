@@ -21,8 +21,6 @@ public class Room {
     @Enumerated(EnumType.STRING)
     private RoomStatus roomStatus;
 
-    private Boolean vacOcc;
-
     private BigDecimal price;
 
     private String beds;

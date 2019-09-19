@@ -120,7 +120,6 @@ public class RoomManager implements InitializingBean {
 
     public void editRoom(Long id, EditRoomRequest editRoomRequest) {
         Room room = roomRepository.findById(id).orElseThrow(RoomNotFoundException::new);
-        room.setVacOcc(editRoomRequest.getVacOcc());
         room.setRoomStatus(editRoomRequest.getRoomStatus());
         roomRepository.save(room);
     }

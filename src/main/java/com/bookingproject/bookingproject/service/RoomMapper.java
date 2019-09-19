@@ -8,7 +8,6 @@ import com.bookingproject.bookingproject.model.RoomStatus;
 public class RoomMapper {
     public static Room map (CreateRoomRequest roomRequest) {
         Room room = new Room();
-        room.setVacOcc(roomRequest.getVacOcc());
         room.setBeds(roomRequest.getBeds());
         room.setRoomStatus(RoomStatus.CLEAN);
         room.setPrice(roomRequest.getPrice());

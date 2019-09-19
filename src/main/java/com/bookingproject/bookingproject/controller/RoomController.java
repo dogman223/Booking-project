@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -39,4 +41,17 @@ public class RoomController {
 
     @GetMapping("/editroom")
     String editRoomView(){return "editroom";}
+
+    @GetMapping("/editroom/{id}")
+    String editEmployeeProfileView (@PathVariable Long id , Model model) {
+        Room foundRoom = roomManager.findById(id);
+        model.addAttribute("room", foundRoom);
+        return "editroom";
+    }
+
+    @PostMapping("/editroom/{asdf}")
+    String editRoom(@PathVariable("asdf") Long asdf, EditRoomRequest editRoomRequest) {
+        roomManager.editRoom(asdf, editRoomRequest);
+        return "redirect:/employee/rooms";
+    }
 }
