@@ -132,20 +132,20 @@
 </head>
 <body>
 <div class="main-block">
-    <form action="/client" method="post">
-        <h1>Create a profile</h1>
+    <form th:action="'/employee/edit_employee_profile/' + ${employee.id}" method="POST">
+        <h1>Edit employee</h1>
         <fieldset>
             <legend>
                 <h3>Personal Details</h3>
             </legend>
             <div  class="personal-details">
                 <div>
-                    <div><label>Login*</label><input type="text" name="login" required></div>
-                    <div><label>Password*</label><input type="password" name="password" required></div>
-                    <div><label>First name*</label><input type="text" name="name" required></div>
-                    <div><label>Surname*</label><input type="text" name="surname" required></div>
-                    <div><label>Email*</label><input type="text" name="email"></div>
-                    <div><label>Phone*</label><input type="text" name="phone"></div>
+                    <div><label>First name*</label><input type="text" th:name="'name'" th:value="${employee.name}"></div>
+                    <div><label>Surname*</label><input type="text" th:name="'surname'" th:value="${employee.surname}"></div>
+                    <div><label>employee role (WORKER, MANAGER, CHARWOMAN)*</label><input type="text" th:name="'employeeRole'" th:value="${employee.employeeRole}"></div>
+
+
+                    <div><label>salary*</label><input type="text" th:name="'salary'" th:value="${employee.salary}"></div>
                 </div>
             </div>
         </fieldset>
@@ -154,3 +154,4 @@
 </div>
 </body>
 </html>
+<div style="text-align: center;"/>(edited)

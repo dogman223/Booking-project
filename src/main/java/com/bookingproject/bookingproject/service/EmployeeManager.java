@@ -1,5 +1,9 @@
 package com.bookingproject.bookingproject.service;
 
+
+import com.bookingproject.bookingproject.controller.CreateEmployeeRequest;
+
+import com.bookingproject.bookingproject.model.Client;
 import com.bookingproject.bookingproject.model.Employee;
 import com.bookingproject.bookingproject.model.EmployeeRole;
 import com.bookingproject.bookingproject.repository.EmployeeRepository;
@@ -8,7 +12,8 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Random;
+import java.util.Optional;
+
 
 @Service
 public class EmployeeManager implements InitializingBean {
@@ -24,7 +29,7 @@ public class EmployeeManager implements InitializingBean {
         employee.setEmployeeRole(EmployeeRole.MANAGER);
         employee.setSalary(BigDecimal.valueOf(8000));
         employee.setName("Vladislav");
-        employee.setLastname("Kovalenko");
+        employee.setSurname("Kovalenko");
         employeeRepository.save(employee);
     }
     public void saveEmployee(){
@@ -32,7 +37,7 @@ public class EmployeeManager implements InitializingBean {
         employee.setEmployeeRole(EmployeeRole.WORKER);
         employee.setSalary(BigDecimal.valueOf(2000));
         employee.setName("Janusz");
-        employee.setLastname("Wiecejniezarobi");
+        employee.setSurname("Wiecejniezarobi");
         employeeRepository.save(employee);
     }
     public void saveEmployeeWithHigherSalary(){
@@ -40,7 +45,7 @@ public class EmployeeManager implements InitializingBean {
         employee.setEmployeeRole(EmployeeRole.WORKER);
         employee.setSalary(BigDecimal.valueOf(4000));
         employee.setName("Andrzej");
-        employee.setLastname("Superbogacz");
+        employee.setSurname("Superbogacz");
         employeeRepository.save(employee);
     }
     public void saveCharwoman(){
@@ -48,7 +53,7 @@ public class EmployeeManager implements InitializingBean {
         employee.setEmployeeRole(EmployeeRole.CHARWOMAN);
         employee.setSalary(BigDecimal.valueOf(1500));
         employee.setName("Jadzia ");
-        employee.setLastname("Kowalska");
+        employee.setSurname("Kowalska");
         employeeRepository.save(employee);
     }
 
@@ -67,4 +72,35 @@ public class EmployeeManager implements InitializingBean {
         saveCharwoman();
         saveEmployee();
     }
+
+    public void saveEmployee(CreateEmployeeRequest employeeRequest) {
+        Employee employee = EmployeeMapper.map(employeeRequest);
+        employeeRepository.save(employee);
+    }
+
+
+    public void deleteEmployee (Long id) {
+        employeeRepository.deleteById(id);
+
+    }
+
+    public Employee findEmployeeById (Long id) {
+        Employee employee = employeeRepository.getOne(id);
+        return employee;
+    }
+
+
+
+    public void editEmployee(Long id, CreateEmployeeRequest createEmployeeRequest) {
+        Employee editedEmployee = employeeRepository.getOne(id);
+        editedEmployee.setName(createEmployeeRequest.getName());
+        editedEmployee.setSurname(createEmployeeRequest.getSurname());
+        editedEmployee.setEmployeeRole(createEmployeeRequest.getEmployeeRole());
+        editedEmployee.setSalary(createEmployeeRequest.getSalary());
+        employeeRepository.save(editedEmployee);
+    }
+
+
+
 }
+

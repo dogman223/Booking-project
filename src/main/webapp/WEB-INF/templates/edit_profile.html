@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Profile registration form</title>
+    <title>Profile edit form</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <style>
@@ -132,24 +132,23 @@
 </head>
 <body>
 <div class="main-block">
-    <form action="/client" method="post">
-        <h1>Create a profile</h1>
+    <form th:action="'/client/edit_profile'" method="post">
+        <h1>Edit a profile</h1>
         <fieldset>
             <legend>
-                <h3>Personal Details</h3>
+                <h3 th:name="'id'" th:value="${client.id}">Personal Details</h3>
             </legend>
             <div  class="personal-details">
                 <div>
-                    <div><label>Login*</label><input type="text" name="login" required></div>
-                    <div><label>Password*</label><input type="password" name="password" required></div>
-                    <div><label>First name*</label><input type="text" name="name" required></div>
-                    <div><label>Surname*</label><input type="text" name="surname" required></div>
-                    <div><label>Email*</label><input type="text" name="email"></div>
-                    <div><label>Phone*</label><input type="text" name="phone"></div>
+                    <div><label>Password*</label><input type="password" th:name="'password'" th:value="${client.password}"></div>
+                    <div><label>First name*</label><input type="text" th:name="'name'" th:value="${client.name}"></div>
+                    <div><label>Surname*</label><input type="text" th:name="'surname'" th:value="${client.surname}"></div>
+                    <div><label>Email*</label><input type="text" th:name="'email'" th:value="${client.email}"></div>
+                    <div><label>Phone*</label><input type="text" th:name="'phone'" th:value="${client.phone}"></div>
                 </div>
             </div>
         </fieldset>
-        <button type="submit">Submit</button>
+        <button type="submit" th:name="'id'" th:value="${client.id}">Submit</button>
     </form>
 </div>
 </body>
