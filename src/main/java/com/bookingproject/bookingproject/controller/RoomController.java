@@ -43,7 +43,7 @@ public class RoomController {
     String editRoomView(){return "editroom";}
 
     @GetMapping("/editroom/{id}")
-    String editEmployeeProfileView (@PathVariable Long id , Model model) {
+    String editRoom (@PathVariable Long id , Model model) {
         Room foundRoom = roomManager.findById(id);
         model.addAttribute("room", foundRoom);
         return "editroom";
@@ -52,6 +52,6 @@ public class RoomController {
     @PostMapping("/editroom/{asdf}")
     String editRoom(@PathVariable("asdf") Long asdf, EditRoomRequest editRoomRequest) {
         roomManager.editRoom(asdf, editRoomRequest);
-        return "redirect:/employee/rooms";
+        return "redirect:/rooms";
     }
 }

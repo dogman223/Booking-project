@@ -132,19 +132,19 @@
 </head>
 <body>
 <div class="main-block">
-    <form th:action="'/rooms/editroom'" method="post">
+    <form th:action="'/rooms/editroom/' + ${room.id}" method="POST">
         <h1>Edit room status</h1>
         <fieldset>
             <legend>
-                <h3 th:name="'id'" th:value="${room.id}">Room Details</h3>
+                <h3>Room Details</h3>
             </legend>
-            <div  class="personal-details">
+            <div  class="room-details">
                 <div>
                     <td th:text="${room.id}" />
                     <td th:text="${room.roomCategory}" />
                     <td th:text="${room.price}" />
                     <td th:text="${room.beds}" />
-                    <div><label>Status*</label><input type="text" name="roomStatus" th:value="${room.roomStatus}"></div>
+                    <div><label>Status (CLEAN, DIRTY, DAMAGED)*</label><input type="text" th:name="'editroom'" th:value="${room.roomStatus}"></div>
                 </div>
             </div>
         </fieldset>

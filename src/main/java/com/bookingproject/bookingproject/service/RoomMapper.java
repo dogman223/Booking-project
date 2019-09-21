@@ -9,9 +9,9 @@ public class RoomMapper {
     public static Room map (CreateRoomRequest roomRequest) {
         Room room = new Room();
         room.setBeds(roomRequest.getBeds());
-        room.setRoomStatus(RoomStatus.CLEAN);
+        room.setRoomStatus(roomRequest.getRoomStatus());
         room.setPrice(roomRequest.getPrice());
-        room.setRoomCategory(RoomCategory.DELUXE);
+        room.setRoomCategory(roomRequest.getRoomCategory());
         return room;
     }
 }

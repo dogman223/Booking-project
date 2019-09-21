@@ -2,11 +2,16 @@ package com.bookingproject.bookingproject.controller;
 
 import com.bookingproject.bookingproject.model.RoomCategory;
 import com.bookingproject.bookingproject.model.RoomStatus;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import java.math.BigDecimal;
-
+@Data
+@NoArgsConstructor
 public class CreateRoomRequest {
 
     @Enumerated(EnumType.STRING)
@@ -21,27 +26,4 @@ public class CreateRoomRequest {
 
     private String beds;
 
-    public Boolean getVacOcc() {
-        return vacOcc;
-    }
-
-    public void setVacOcc(Boolean vacOcc) {
-        this.vacOcc = vacOcc;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public String getBeds() {
-        return beds;
-    }
-
-    public void setBeds(String beds) {
-        this.beds = beds;
-    }
 }

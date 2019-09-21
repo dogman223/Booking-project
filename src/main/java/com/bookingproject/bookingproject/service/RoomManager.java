@@ -1,5 +1,6 @@
 package com.bookingproject.bookingproject.service;
 
+import com.bookingproject.bookingproject.controller.CreateRoomRequest;
 import com.bookingproject.bookingproject.controller.EditRoomRequest;
 import com.bookingproject.bookingproject.exception.RoomNotFoundException;
 import com.bookingproject.bookingproject.model.Room;
@@ -19,6 +20,7 @@ public class RoomManager implements InitializingBean {
     public RoomManager(RoomRepository roomRepository) {
         this.roomRepository = roomRepository;
     }
+
 
     public void saveRoom1() {
         Room room = new Room();
@@ -119,9 +121,9 @@ public class RoomManager implements InitializingBean {
     }
 
     public void editRoom(Long id, EditRoomRequest editRoomRequest) {
-        Room room = roomRepository.findById(id).orElseThrow(RoomNotFoundException::new);
-        room.setRoomStatus(editRoomRequest.getRoomStatus());
-        roomRepository.save(room);
+        Room editedRoom = roomRepository.getOne(id);
+        editedRoom.setRoomStatus(editRoomRequest.getRoomStatus());
+        roomRepository.save(editedRoom);
     }
 
     public Room findById(Long id){
