@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -28,8 +28,8 @@ public class Reservation {
     @JoinColumn (name = "id_room")
     private Room room;
 
-    private LocalDateTime arrival;
-    private LocalDateTime departure;
+    private LocalDate arrival;
+    private LocalDate departure;
     private Integer guestsNumber;
     private ReservationStatus status;
 

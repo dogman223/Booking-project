@@ -3,11 +3,12 @@ package com.bookingproject.bookingproject.service;
 import com.bookingproject.bookingproject.controller.CreateClientRequest;
 import com.bookingproject.bookingproject.controller.EditClientRequest;
 import com.bookingproject.bookingproject.model.Client;
+import com.bookingproject.bookingproject.model.Reservation;
 import com.bookingproject.bookingproject.repository.ClientRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
+import java.util.Optional;
 
 @Service
 public class ClientManager implements InitializingBean {
@@ -101,6 +102,16 @@ public class ClientManager implements InitializingBean {
         editedClient.setEmail(editClientRequest.getEmail());
         editedClient.setPhone(editClientRequest.getPhone());
         editedClient.setPassword(editClientRequest.getPassword());
+        clientRepository.save(editedClient);
+    }
+
+    public void deleteClient(Long id) {
+        clientRepository.deleteById(id);
+    }
+
+    public void updateReservations(Long id, EditClientRequest editClientRequest) {
+        Client editedClient = clientRepository.getOne(id);
+        editedClient.setReservations(editClientRequest.getReservations());
         clientRepository.save(editedClient);
     }
 }

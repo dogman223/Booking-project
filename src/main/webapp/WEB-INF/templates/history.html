@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Dates select</title>
+    <title>Booking history</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <style>
@@ -132,16 +132,13 @@
 </head>
 <body>
 <div class="main-block">
-    <form action="/client/room_select" method="get">
-        <h1>New Reservation - dates selection</h1>
+    <form th:action="'/client/history/bookings_list'" method="post">
+        <h1>Insert login and password</h1>
         <fieldset>
-            <legend>
-                <h3>Choose dates</h3>
-            </legend>
             <div  class="personal-details">
                 <div>
-                    <div><label>Arrival</label><input type="date" name="arrival" required></div>
-                    <div><label>Departure</label><input type="date" name="departure" required></div>
+                    <div><label>Login</label><input type="text" th:name="'login'" required></div>
+                    <div><label>Password</label><input type="password" th:name="'password'" required></div>
                 </div>
             </div>
         </fieldset>
